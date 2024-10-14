@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-fake-service
+  namespace: default
+spec:
+  type: ClusterIP
+  selector:
+    app: fake-service
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 9090

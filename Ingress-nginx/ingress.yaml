@@ -1,0 +1,52 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nginx-ingress
+  namespace: default
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: nginx.example.local
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: svc-nginx
+            port:
+              number: 8080
+
+  - host: http-echo.example.local
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: svc-http-echo
+            port:
+              number: 8080
+
+  - host: whoami.example.local
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: svc-whoami
+            port:
+              number: 8080
+
+  - host: fake-service.example.local
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: svc-fake-service
+            port:
+              number: 8080
+

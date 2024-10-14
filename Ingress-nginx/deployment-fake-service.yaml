@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-fake-service
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: fake-service
+  template:
+    metadata:
+      labels:
+        app: fake-service
+    spec:
+      containers:
+      - name: fake-service
+        image: nicholasjackson/fake-service:v0.26.2 # https://github.com/nicholasjackson/fake-service
+        ports:
+        - containerPort: 9090
+
