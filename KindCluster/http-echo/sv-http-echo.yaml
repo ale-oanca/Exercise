@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-http-echo
+  namespace: test
+spec:
+  type: ClusterIP
+  selector:
+    app: http-echo
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 5678
