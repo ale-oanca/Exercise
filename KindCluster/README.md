@@ -2,14 +2,14 @@
 
 I have to create this infrastructure.
 I bought a space on contabo for this assignment
-    ssh root@vmi2194190.contaboserver.net
+
 # I created a public key in my local machine to access remote machine
     ssh-keygen -b 4096 -> creation
     ls ~/.ssh -> find my public key
 # Insert the public key in the remote machine 
     -> .ssh/authorized_keys
     systemctl reload sshd
-    I can access now with -> ssh root@vmi2194190.contaboserver.net
+    I can access now with 
 
 # Create a cluster on a single node
 
@@ -29,7 +29,7 @@ I bought a space on contabo for this assignment
     - Clone kube-prometheus project
     - Create monitoring namespace, CustomResourceDefinitions & operator pod
     - Deploy Prometheus Monitoring Stack on Kubernetes
-    - Access Grafana dashboards with port-forward ( admin / Admin)
+    - Access Grafana dashboards with port-forward 
         - kubectl --namespace monitoring port-forward svc/grafana 3000
         - In my local machine launch -> ssh -L 3000:127.0.0.1:3000 -N root@vmi2194190.contaboserver.net
         - Paste the url http://localhost:3000 to a browser
@@ -38,14 +38,14 @@ I bought a space on contabo for this assignment
     - kubectl create namespace argocd
     - kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
     - kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath='{.data.password}' | base64 --decode 
-    - Access ArgoCD dashboards with port-forward ( admin / wydBzifsV940eVmV ) 
+    - Access ArgoCD dashboards with port-forward 
         - kubectl port-forward svc/argocd-server -n argocd 8080:443
         - In my local machine launch -> ssh -L 8080:127.0.0.1:8080 -N root@vmi2194190.contaboserver.net
         - Paste the url http://localhost:8080 to a browser
 
 # I create a projects in Gitlab  
     - The private projects is "Test" 
-    - Connected the repo to argocd via token ( gitlab+deploy-token-5240635 / gldt-ddrMrZSHfEw5_szPwe8- )
+    - Connected the repo to argocd via token
         link : https://argo-cd.readthedocs.io/en/stable/user-guide/private-repositories/
 
 # Deploy strimzi operator to install Kafka( https://strimzi.io/quickstarts/ )
